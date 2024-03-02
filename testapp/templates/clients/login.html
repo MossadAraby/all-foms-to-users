@@ -19,8 +19,12 @@
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     {% buttons %}
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <div class=" gap-2 col-6 ">
+                        <button type="submit" class="btn btn-success ">Login</button>
+                        <a href="{% url 'testapp:signup' %}" type="submit" class="btn btn-primary mx-2 flex-grow-1 btn-sm">Sign Up</a>
+                    </div>
                     {% endbuttons %}
+
                 </form>
                 <a href="{% url 'test:forgot_password'%}">forgot password</a>
             </div>
