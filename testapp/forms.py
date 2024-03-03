@@ -31,8 +31,15 @@ class ClientLoginForm(forms.Form):
         if User.objects.filter(username = user_name).exists():
             pass
         else:
-            raise forms.ValidationError('Client with username is not exists.')
+            raise forms.ValidationError('Client with username is not exists !')
         return user_name
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if User.objects.filter(password = password).exists():
+            pass
+        else:
+            raise forms.ValidationError('Wrong password !')
+        return password
 
 class ClientProfileUpdate(forms.ModelForm):
     class Meta:
