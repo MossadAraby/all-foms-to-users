@@ -11,8 +11,18 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.views import PasswordChangeView
-class HomePageView(TemplateView):
-    template_name = "home.html"
+from django.contrib.auth.decorators import login_required
+
+# @login_required
+# class HomePageView(TemplateView):
+#     template_name = "home.html"
+
+# Create your views here.
+# def login(request):
+#     return render(request, 'login.html')
+@login_required
+def home(request):
+    return render(request, 'home.html')
 
 
 class ClientRegisterationView(CreateView):
