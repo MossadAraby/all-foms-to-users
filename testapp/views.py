@@ -25,7 +25,7 @@ def home(request):
     return render(request, 'home.html')
 
 
-class ClientRegisterationView(CreateView):
+class ClientRegistrationView(CreateView):
     template_name = 'clients/signup.html'
     form_class = ClientRegisterForm
     success_url = '/home/'
@@ -43,7 +43,7 @@ class ClientRegisterationView(CreateView):
         form.instance.user = user
         login(self.request,user)
         return super().form_valid(form)
-       
+
 class ClientLogoutView(View):
     def get(self,request):
         logout(request)
@@ -119,7 +119,7 @@ class ChangePasswordView(PasswordChangeView):
     template_name = "clients/change_password.html"
     success_url = '/home/'
     
-class ClinetProfileView(TemplateView):
+class ClientProfileView(TemplateView):
     template_name = 'clients/profile.html'
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated and request.user.clients:
